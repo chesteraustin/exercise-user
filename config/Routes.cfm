@@ -19,6 +19,18 @@
 	}
 
 	// Your Application Routes
+
+	// map base route to check user
+	addRoute(
+		pattern = 'api/user',
+		handler = 'api.user',
+		action = {
+			GET = 'check',
+			POST = 'login',
+			DELETE = 'logout'
+		}
+	);
+
 	addRoute(pattern=":handler/:action?");
 
 
