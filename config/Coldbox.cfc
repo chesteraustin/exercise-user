@@ -14,7 +14,7 @@
 			handlersIndexAutoReload = true,
 
 			//Implicit Events
-			defaultEvent			= "Echo.index",
+			defaultEvent			= "",
 			requestStartHandler		= "",
 			requestEndHandler		= "",
 			applicationStartHandler = "",
