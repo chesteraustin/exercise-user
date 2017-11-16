@@ -35,7 +35,7 @@ component{
 	* login
 	*/
 	function login( event, rc, prc ){
-		event.renderData( type="JSON", data="login" );
+		event.renderData( type="JSON", data=rc );
 
 //		event.setView( "api/user/login" );
 	}

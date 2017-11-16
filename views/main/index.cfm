@@ -9,8 +9,8 @@
 </div>
 
 <div class="row">
-	<div class="col-md-4 col-md-offset-4">
-		<form>
+	<div class="col-md-4 offset-md-4">
+        <section>
 		<div class="form-group">
 			<label for="emailAddress">Email address</label>
 			<input type="email" class="form-control" id="emailAddress" placeholder="Enter email">
@@ -19,7 +19,19 @@
 			<label for="password">Password</label>
 			<input type="password" class="form-control" id="password" placeholder="Password">
 		</div>
-	</form>
+		<div class="form-group">
+            <button>Log In</button>
+		</div>
+        </section>
+
+        <section>
+		<div class="page-header">
+			<h2>You are in.</h2>
+        </div>
+		<div class="form-group">
+            <button>Log Out</button>
+		</div>
+        </section>
 	</div>
 	<div class="col-md-12">
 		<section id="customize">
