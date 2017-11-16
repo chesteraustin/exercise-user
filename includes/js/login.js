@@ -29,7 +29,8 @@ function checkLogin() {
 function loginForm() {
     var email = $("#emailAddress").val();
     var password = $("#password").val();
-
+    var token = $("#token").val();
+    
     //submit credentials
     $.ajax
     ({
@@ -40,12 +41,19 @@ function loginForm() {
         headers: {
             "Authorization": "Basic " + btoa(email + ":" + password)
         },
-        data: 'comment'
+        data: {
+            "token": token
+        }
     })
     .done(function(){
+        //clear fields
+        $("#emailAddress").val("");
+        $("#password").val("");
+
+        //Display and hide sections
         $("#login-section").hide();
         $("#logout-section").show();
-        $("#login-error").hide();        
+        $("#login-error").hide();
     })
     .fail(function(){
         $("#login-error").show();
@@ -53,5 +61,7 @@ function loginForm() {
 }
 
 function logoutForm() {
-    console.log("i want to logout")
+    $("#login-section").show();
+    $("#logout-section").hide();
+    $("#login-error").hide();        
 }

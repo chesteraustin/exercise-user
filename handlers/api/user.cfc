@@ -34,6 +34,11 @@ component{
 	* login
 	*/
 	function login( event, rc, prc ){
+		//verify token
+		if (NOT CSRFverifyToken(rc.token)){
+			event.renderData( type="JSON", data={}, statusCode=401, statusMessage="Token not found");
+			abort;
+		}
 		//check credentails against db
 		var userQuery = QueryNew("username,password");
 		QueryAddRow(userQuery, [

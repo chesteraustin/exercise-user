@@ -18,6 +18,7 @@
 		<div class="form-group">
 			<label for="password">Password</label>
 			<input type="password" class="form-control login-fields" id="password" placeholder="Password">
+            <input type="hidden" name="token" id="token" value="#CSRFGenerateToken()#" />
 		</div>
 		<div class="form-group">
             <button id="login-btn" class="btn btn-lg btn-primary" disabled="disabled">Log In</button>
