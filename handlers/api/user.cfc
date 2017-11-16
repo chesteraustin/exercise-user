@@ -2,7 +2,6 @@
 * I am a new handler
 */
 component{
-	
 	// OPTIONAL HANDLER PROPERTIES
 	this.prehandler_only 	= "";
 	this.prehandler_except 	= "";
@@ -35,9 +34,21 @@ component{
 	* login
 	*/
 	function login( event, rc, prc ){
-		event.renderData( type="JSON", data=rc );
+		//check credentails against db
+		var userQuery = QueryNew("username,password");
+		QueryAddRow(userQuery, [
+			{username="test@email.com", password="asdf"}
+		]);
+		var credentials = event.getHTTPBasicCredentials();
+		var queryOptions = {dbType="query"}
+		var checkUser = queryExecute("SELECT username, password FROM userQuery WHERE username = :username and password = :password", {username: credentials.username, password: credentials.password}, queryOptions)
 
-//		event.setView( "api/user/login" );
+		if (checkUser.recordcount eq 1 ) {
+			event.renderData( type="JSON", data=[checkUser] );
+		}
+		else {
+			event.renderData( type="JSON", data={}, statusCode=401, statusMessage="User not found");
+		}
 	}
 
 	/**
@@ -52,11 +63,15 @@ component{
 	* check
 	*/
 	function check( event, rc, prc ){
-//		event.setView( "api/user/check" );
-		event.renderData( type="JSON", data="check" );
+		//check credentails against db
+		var userQuery = QueryNew("username,password");
+		QueryAddRow(userQuery, [
+			{username="test@email.com", password="asdf"}
+		]);
+		var credentials = event.getHTTPBasicCredentials();
+		var queryOptions = {dbType="query"}
+		var checkUser = queryExecute("SELECT username, password FROM userQuery WHERE username = :username and password = :password", {username: credentials.username, password: credentials.password}, queryOptions)
 
+		event.renderData( type="JSON", data=[checkUser] );
 	}
-
-
-	
 }
